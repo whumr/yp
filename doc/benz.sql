@@ -10,10 +10,8 @@ Target Server Type    : MYSQL
 Target Server Version : 50612
 File Encoding         : 65001
 
-Date: 2015-08-07 17:00:39
+Date: 2015-11-20 16:34:59
 */
-
-CREATE DATABASE `benz` /*!40100 DEFAULT CHARACTER SET utf8 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
@@ -26,7 +24,12 @@ CREATE TABLE `country` (
   `name` varchar(50) NOT NULL,
   `type` varchar(10) DEFAULT NULL COMMENT 'local:国内,gat:港澳台,dny:东南亚,europe:欧洲,america:美洲',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of country
+-- ----------------------------
+INSERT INTO `country` VALUES ('1', '中国', 'local');
 
 -- ----------------------------
 -- Table structure for dates
@@ -47,6 +50,10 @@ CREATE TABLE `dates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of dates
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for member
 -- ----------------------------
 DROP TABLE IF EXISTS `member`;
@@ -60,7 +67,62 @@ CREATE TABLE `member` (
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `last_updated` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of member
+-- ----------------------------
+INSERT INTO `member` VALUES ('1', 'a@a.com', '111111', 'a', null, null, '2015-08-18 17:13:40', '2015-08-18 17:13:40');
+INSERT INTO `member` VALUES ('2', '1@a.com', '111111', '1', null, null, '2015-09-16 15:11:33', '2015-09-16 15:11:33');
+
+-- ----------------------------
+-- Table structure for province
+-- ----------------------------
+DROP TABLE IF EXISTS `province`;
+CREATE TABLE `province` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `country_id` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of province
+-- ----------------------------
+INSERT INTO `province` VALUES ('1', '北京', '1');
+INSERT INTO `province` VALUES ('2', '上海', '1');
+INSERT INTO `province` VALUES ('3', '重庆', '1');
+INSERT INTO `province` VALUES ('4', '天津', '1');
+INSERT INTO `province` VALUES ('5', '香港', '1');
+INSERT INTO `province` VALUES ('6', '澳门', '1');
+INSERT INTO `province` VALUES ('7', '河北', '1');
+INSERT INTO `province` VALUES ('8', '河南', '1');
+INSERT INTO `province` VALUES ('9', '辽宁', '1');
+INSERT INTO `province` VALUES ('10', '吉林', '1');
+INSERT INTO `province` VALUES ('11', '黑龙江', '1');
+INSERT INTO `province` VALUES ('12', '山西', '1');
+INSERT INTO `province` VALUES ('13', '内蒙古', '1');
+INSERT INTO `province` VALUES ('14', '江苏', '1');
+INSERT INTO `province` VALUES ('15', '浙江', '1');
+INSERT INTO `province` VALUES ('16', '安徽', '1');
+INSERT INTO `province` VALUES ('17', '江西', '1');
+INSERT INTO `province` VALUES ('18', '福建', '1');
+INSERT INTO `province` VALUES ('19', '山东', '1');
+INSERT INTO `province` VALUES ('20', '台湾', '1');
+INSERT INTO `province` VALUES ('21', '湖北', '1');
+INSERT INTO `province` VALUES ('22', '湖南', '1');
+INSERT INTO `province` VALUES ('23', '广东', '1');
+INSERT INTO `province` VALUES ('24', '广西', '1');
+INSERT INTO `province` VALUES ('25', '海南', '1');
+INSERT INTO `province` VALUES ('26', '四川', '1');
+INSERT INTO `province` VALUES ('27', '云南', '1');
+INSERT INTO `province` VALUES ('28', '西藏', '1');
+INSERT INTO `province` VALUES ('29', '贵州', '1');
+INSERT INTO `province` VALUES ('30', '陕西', '1');
+INSERT INTO `province` VALUES ('31', '甘肃', '1');
+INSERT INTO `province` VALUES ('32', '青海', '1');
+INSERT INTO `province` VALUES ('33', '宁夏', '1');
+INSERT INTO `province` VALUES ('34', '新疆', '1');
 
 -- ----------------------------
 -- Table structure for routes
@@ -74,6 +136,10 @@ CREATE TABLE `routes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of routes
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for viewspot
 -- ----------------------------
 DROP TABLE IF EXISTS `viewspot`;
@@ -83,7 +149,12 @@ CREATE TABLE `viewspot` (
   `type` char(1) DEFAULT 'c',
   `country` tinyint(3) unsigned DEFAULT NULL,
   `province` tinyint(3) unsigned DEFAULT NULL,
+  `parent_id` int(10) unsigned DEFAULT NULL,
   `city` int(10) unsigned DEFAULT NULL,
   `comments` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of viewspot
+-- ----------------------------
