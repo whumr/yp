@@ -12,11 +12,20 @@
     <name>admin</name>
     <packaging>war</packaging>
 
+    <properties>
+        <sitemesh.version>3.0.1</sitemesh.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.iyitong</groupId>
             <artifactId>business</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.sitemesh</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>${sitemesh.version}</version>
         </dependency>
     </dependencies>
 </project>
