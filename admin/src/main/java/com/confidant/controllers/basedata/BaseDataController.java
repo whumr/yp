@@ -1,21 +1,20 @@
-package com.confidant.controllers;
+package com.confidant.controllers.basedata;
 
 import com.confidant.common.BaseController;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Administrator on 2015/1/29.
  */
-@Controller("indexController")
-@RequestMapping("")
-public class IndexController extends BaseController {
+@Controller("basedataController")
+@RequestMapping("/basedata")
+public class BaseDataController extends BaseController {
+
+    private static String BATH_PATH = "basedata/";
 
     @RequestMapping({"", "/index"})
     public String index() throws Exception {
-        return "index";
+        return BATH_PATH + "index";
     }
 }

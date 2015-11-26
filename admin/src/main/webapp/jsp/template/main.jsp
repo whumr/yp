@@ -25,6 +25,22 @@
     <link href="css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico"/>
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="js/metronic.js" type="text/javascript"></script>
+    <script src="js/layout.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script>
+        jQuery(document).ready(function() {
+            Metronic.init(); // init metronic core componets
+            Layout.init(); // init layout
+        });
+    </script>
+    <!-- END JAVASCRIPTS -->
     <sitemesh:write property="head"/>
 </head>
 <!-- END HEAD -->
@@ -75,32 +91,21 @@
 				<li class="start active open">
 					<a href="javascript:;">
 					<i class="icon-home"></i>
-					<span class="title">Dashboard</span>
-					<span class="selected"></span>
-					<span class="arrow open"></span>
+					<span class="title">基础设置</span>
+					<span class="arrow"></span>
 					</a>
 					<ul class="sub-menu">
-						<li class="active">
-							<a href="index-2.html">
+						<li>
+							<a href="/basedata">
 							<i class="icon-bar-chart"></i>
-							Default Dashboard</a>
-						</li>
-						<li>
-							<a href="index_2.html">
-							<i class="icon-bulb"></i>
-							New Dashboard #1</a>
-						</li>
-						<li>
-							<a href="index_3.html">
-							<i class="icon-graph"></i>
-							New Dashboard #2</a>
+							基础数据</a>
 						</li>
 					</ul>
 				</li>
 				<li>
 					<a href="javascript:;">
 					<i class="icon-basket"></i>
-					<span class="title">eCommerce</span>
+					<span class="title">用户管理</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
@@ -108,26 +113,6 @@
 							<a href="ecommerce_index.html">
 							<i class="icon-home"></i>
 							Dashboard</a>
-						</li>
-						<li>
-							<a href="ecommerce_orders.html">
-							<i class="icon-basket"></i>
-							Orders</a>
-						</li>
-						<li>
-							<a href="ecommerce_orders_view.html">
-							<i class="icon-tag"></i>
-							Order View</a>
-						</li>
-						<li>
-							<a href="ecommerce_products.html">
-							<i class="icon-handbag"></i>
-							Products</a>
-						</li>
-						<li>
-							<a href="ecommerce_products_edit.html">
-							<i class="icon-pencil"></i>
-							Product Edit</a>
 						</li>
 					</ul>
 				</li>
@@ -140,18 +125,15 @@
 	<div class="page-content-wrapper">
 		<div class="page-content">
 			<!-- BEGIN PAGE HEADER-->
-			<h3 class="page-title">
-			Dashboard <small>reports & statistics</small>
-			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
 					<li>
 						<i class="fa fa-home"></i>
-						<a href="index-2.html">Home</a>
+						<a href="index">首页</a>
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="#">Dashboard</a>
+						<a href="javascript:void(0)">工作台</a>
 					</li>
 				</ul>
 			</div>
@@ -174,23 +156,6 @@
 	</div>
 </div>
 <!-- END FOOTER -->
-<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN CORE PLUGINS -->
-<script src="plugins/jquery.min.js" type="text/javascript"></script>
-<script src="plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<!-- END CORE PLUGINS -->
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="js/metronic.js" type="text/javascript"></script>
-<script src="js/layout.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
-<script>
-jQuery(document).ready(function() {    
-   Metronic.init(); // init metronic core componets
-   Layout.init(); // init layout
-});
-</script>
-<!-- END JAVASCRIPTS -->
 </body>
-
 <!-- END BODY -->
 </html>

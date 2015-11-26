@@ -11,6 +11,7 @@
     <artifactId>admin</artifactId>
     <name>admin</name>
     <packaging>war</packaging>
+    <version>${business.version}</version>
 
     <properties>
         <sitemesh.version>3.0.1</sitemesh.version>
@@ -20,7 +21,7 @@
         <dependency>
             <groupId>com.iyitong</groupId>
             <artifactId>business</artifactId>
-            <version>${project.version}</version>
+            <version>${business.version}</version>
         </dependency>
         <dependency>
             <groupId>org.sitemesh</groupId>

@@ -11,12 +11,13 @@
     <artifactId>web</artifactId>
     <name>web</name>
     <packaging>war</packaging>
+    <version>${business.version}</version>
 
     <dependencies>
         <dependency>
             <groupId>com.iyitong</groupId>
             <artifactId>business</artifactId>
-            <version>${project.version}</version>
+            <version>${business.version}</version>
         </dependency>
     </dependencies>
 

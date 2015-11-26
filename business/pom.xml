@@ -11,5 +11,6 @@
     <artifactId>business</artifactId>
     <name>business</name>
     <packaging>jar</packaging>
+    <version>${business.version}</version>
 
 </project>
