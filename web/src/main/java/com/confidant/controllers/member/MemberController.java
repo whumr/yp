@@ -4,11 +4,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.confidant.common.BaseController;
 import com.confidant.common.Constants;
 import com.confidant.entity.Member;
+import com.confidant.service.member.MemberService;
 import com.confidant.util.FileUtil;
 import com.confidant.util.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +26,7 @@ public class MemberController extends BaseController {
     private static String BATH_PATH = "member/";
 
     @Autowired
-    private MemberService<Member> memberService;
+    private MemberService memberService;
 
     @RequestMapping("/login")
     public String login(HttpServletRequest request, HttpServletResponse response) throws Exception {

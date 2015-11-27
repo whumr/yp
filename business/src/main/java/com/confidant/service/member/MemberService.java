@@ -1,4 +1,4 @@
-package com.confidant.controllers.member;
+package com.confidant.service.member;
 
 import com.confidant.common.BaseService;
 import com.confidant.entity.Member;
@@ -10,11 +10,9 @@ import java.util.List;
  * Created by Administrator on 2015/1/29.
  */
 @Service("memberService")
-public class MemberService<E extends Member> extends BaseService<E> {
+public class MemberService extends BaseService {
 
-    static {
-        NAMESPACE = "member.";
-    }
+    protected String NAMESPACE = "member.";
 
     /**
      * 验证用户名重复

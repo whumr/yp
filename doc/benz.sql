@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50612
 File Encoding         : 65001
 
-Date: 2015-11-20 16:34:59
+Date: 2015-11-27 16:41:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,12 +24,14 @@ CREATE TABLE `country` (
   `name` varchar(50) NOT NULL,
   `type` varchar(10) DEFAULT NULL COMMENT 'local:国内,gat:港澳台,dny:东南亚,europe:欧洲,america:美洲',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of country
 -- ----------------------------
-INSERT INTO `country` VALUES ('1', '中国', 'local');
+INSERT INTO `country` VALUES ('1', '国内', 'local');
+INSERT INTO `country` VALUES ('2', '港澳台', 'gat');
+INSERT INTO `country` VALUES ('3', '日本', 'dy');
 
 -- ----------------------------
 -- Table structure for dates
@@ -93,8 +95,8 @@ INSERT INTO `province` VALUES ('1', '北京', '1');
 INSERT INTO `province` VALUES ('2', '上海', '1');
 INSERT INTO `province` VALUES ('3', '重庆', '1');
 INSERT INTO `province` VALUES ('4', '天津', '1');
-INSERT INTO `province` VALUES ('5', '香港', '1');
-INSERT INTO `province` VALUES ('6', '澳门', '1');
+INSERT INTO `province` VALUES ('5', '香港', '2');
+INSERT INTO `province` VALUES ('6', '澳门', '2');
 INSERT INTO `province` VALUES ('7', '河北', '1');
 INSERT INTO `province` VALUES ('8', '河南', '1');
 INSERT INTO `province` VALUES ('9', '辽宁', '1');
@@ -108,7 +110,7 @@ INSERT INTO `province` VALUES ('16', '安徽', '1');
 INSERT INTO `province` VALUES ('17', '江西', '1');
 INSERT INTO `province` VALUES ('18', '福建', '1');
 INSERT INTO `province` VALUES ('19', '山东', '1');
-INSERT INTO `province` VALUES ('20', '台湾', '1');
+INSERT INTO `province` VALUES ('20', '台湾', '2');
 INSERT INTO `province` VALUES ('21', '湖北', '1');
 INSERT INTO `province` VALUES ('22', '湖南', '1');
 INSERT INTO `province` VALUES ('23', '广东', '1');
@@ -147,10 +149,8 @@ CREATE TABLE `viewspot` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `type` char(1) DEFAULT 'c',
-  `country` tinyint(3) unsigned DEFAULT NULL,
-  `province` tinyint(3) unsigned DEFAULT NULL,
+  `province_id` tinyint(3) unsigned DEFAULT NULL,
   `parent_id` int(10) unsigned DEFAULT NULL,
-  `city` int(10) unsigned DEFAULT NULL,
   `comments` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

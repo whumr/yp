@@ -12,25 +12,25 @@ import java.util.List;
  * Created by Administrator on 2015/1/7.
  */
 @Service
-public abstract class BaseService<E extends BaseEntity> {
+public abstract class BaseService {
 
     @Autowired
     @Qualifier("baseSqlSession")
     protected SqlSession baseSqlSession;
 
-    protected static String NAMESPACE;
-    protected String namespace;
+    protected String NAMESPACE;
+//    protected String namespace;
+//
+//    @PostConstruct
+//    protected void init() {
+//        this.namespace = NAMESPACE;
+//    }
 
-    @PostConstruct
-    protected void init() {
-        this.namespace = NAMESPACE;
+    public void insert(BaseEntity entity) {
+        baseSqlSession.insert(NAMESPACE + "insert", entity);
     }
 
-    public void insert(E entity) {
-        baseSqlSession.insert(namespace + "insert", entity);
-    }
-
-    public void batchInsert(List<E> entities) {
-        baseSqlSession.insert(namespace + "batchInsert", entities);
+    public void batchInsert(List<BaseEntity> entities) {
+        baseSqlSession.insert(NAMESPACE + "batchInsert", entities);
     }
 }

@@ -3,9 +3,13 @@
 <configuration>  
     <typeAliases>
         <typeAlias alias="Member" type="com.confidant.entity.Member"/>
+        <typeAlias alias="Country" type="com.confidant.entity.Country"/>
+        <typeAlias alias="Province" type="com.confidant.entity.Province"/>
+        <typeAlias alias="Viewspot" type="com.confidant.entity.Viewspot"/>
     </typeAliases>
       
     <mappers>  
         <mapper resource="sqlmap/member.xml" />
+        <mapper resource="sqlmap/basedata.xml" />
     </mappers>
 </configuration>  
