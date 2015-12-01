@@ -10,110 +10,79 @@
 <div class="container">
     <div class="row" style="margin-top:20px;margin-bottom:20px;">
         <div class="col-md-4">
-            <h2>省份和地区</h2>
-            <ul id="tree" class="ztree"></ul>
+            <div class="portlet box blue">
+                <div class="portlet-title">
+                    <div class="caption">
+                        省份和地区
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <ul id="tree" class="ztree"></ul>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-8">
-            <h2>景点</h2>
-            <div class="portlet-body form" style="display: block;">
-                <!-- BEGIN FORM-->
-                <form action="#" class="form-horizontal">
-                    <div class="form-actions top">
-                        <div class="row">
-                            <div class="col-md-offset-3 col-md-9">
-                                <button type="submit" class="btn green">Submit</button>
-                                <button type="button" class="btn default">Cancel</button>
-                            </div>
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        景点
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn grey-steel btn-sm">
+                            <input type="radio" name="options" class="toggle" id="option1">添加</label>
                         </div>
                     </div>
-                    <div class="form-body">
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Text</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Enter text">
-														<span class="help-block">
-														A block of help text. </span>
+                </div>
+                <div class="portlet-body form">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">所属地区</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="点击左侧树选择地区" readonly>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Email Address</label>
-                            <div class="col-md-4">
-                                <div class="input-group">
-															<span class="input-group-addon">
-															<i class="fa fa-envelope"></i>
-															</span>
-                                    <input type="email" class="form-control" placeholder="Email Address">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">名  称</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="景点名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">描  述</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="景点描述">
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Password</label>
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <input type="password" class="form-control" placeholder="Password">
-															<span class="input-group-addon">
-															<i class="fa fa-user"></i>
-															</span>
-                                </div>
-                            </div>
+                        <div class="form-actions" align="center">
+                            <button type="submit" class="btn green">保存</button>
+                            <button type="button" class="btn default">取消</button>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Left Icon</label>
-                            <div class="col-md-4">
-                                <div class="input-icon">
-                                    <i class="fa fa-bell-o"></i>
-                                    <input type="text" class="form-control" placeholder="Left icon">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Right Icon</label>
-                            <div class="col-md-4">
-                                <div class="input-icon right">
-                                    <i class="fa fa-microphone"></i>
-                                    <input type="text" class="form-control" placeholder="Right icon">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Input With Spinner</label>
-                            <div class="col-md-4">
-                                <input type="password" class="form-control spinner" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="form-group last">
-                            <label class="col-md-3 control-label">Static Control</label>
-                            <div class="col-md-4">
-                                <p class="form-control-static">
-                                    email@example.com
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-actions fluid">
-                        <div class="row">
-                            <div class="col-md-offset-3 col-md-9">
-                                <button type="submit" class="btn green">Submit</button>
-                                <button type="button" class="btn default">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <!-- END FORM-->
+                    </form>
+
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <td>名称</td>
+                                <td>省份/地区</td>
+                                <td>上级景点</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1111</td>
+                                <td>222</td>
+                                <td>333</td>
+                                <td><a href="javascript:void(0)">删除</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <table class="table table-striped table-bordered table-hover" width="100%">
-                <thead>
-                    <tr>
-                        <td>名称</td>
-                        <td>省份/地区</td>
-                        <td>上级景点</td>
-                        <td>操作</td>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>

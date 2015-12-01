@@ -43,6 +43,8 @@ public class BaseDataController extends BaseController {
                 JSONObject country = new JSONObject();
                 country.put("id", country_id);
                 country.put("name", province.getCountry().getName());
+                if (country_id == 1)
+                    country.put("open", true);
                 array.add(country);
                 country_map.put(country_id, country);
             }
