@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
@@ -18,19 +17,13 @@ public abstract class BaseService {
     @Qualifier("baseSqlSession")
     protected SqlSession baseSqlSession;
 
-    protected String NAMESPACE;
-//    protected String namespace;
-//
-//    @PostConstruct
-//    protected void init() {
-//        this.namespace = NAMESPACE;
-//    }
+    protected String namespace;
 
     public void insert(BaseEntity entity) {
-        baseSqlSession.insert(NAMESPACE + "insert", entity);
+        baseSqlSession.insert(namespace + "insert", entity);
     }
 
     public void batchInsert(List<BaseEntity> entities) {
-        baseSqlSession.insert(NAMESPACE + "batchInsert", entities);
+        baseSqlSession.insert(namespace + "batchInsert", entities);
     }
 }

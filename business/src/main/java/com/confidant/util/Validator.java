@@ -31,4 +31,13 @@ public class Validator {
     public static boolean emptyString(String value, boolean trim) {
         return value == null || (trim ? value.trim().length() == 0 : value.length() == 0);
     }
+
+    public static boolean notInt(String value) {
+        try {
+            Integer.parseInt(value);
+            return false;
+        } catch (Exception e) {
+            return true;
+        }
+    }
 }

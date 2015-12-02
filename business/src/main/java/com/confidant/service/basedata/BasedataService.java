@@ -7,6 +7,7 @@ import com.confidant.entity.Province;
 import com.confidant.entity.Viewspot;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,11 +18,13 @@ import java.util.Map;
 @Service("basedataService")
 public class BasedataService extends BaseService {
 
-    protected String NAMESPACE = "basedata.";
+    @PostConstruct
+    protected void init() {
+        namespace = "basedata.";
+    }
 
     public List<Province> getAllProvinces() {
-//        getAllProvinces
-        List<Map> list = baseSqlSession.selectList(NAMESPACE + "getAllProvinces");
+        List<Map> list = baseSqlSession.selectList(namespace + "getAllProvinces");
         List<Province> result = new ArrayList<Province>();
         for (Map map : list) {
             Province province = new Province();
@@ -38,9 +41,5 @@ public class BasedataService extends BaseService {
             result.add(province);
         }
         return result;
-    }
-
-    public List<Viewspot> searchViewspot() {
-        return null;
     }
 }

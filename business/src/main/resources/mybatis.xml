@@ -11,5 +11,6 @@
     <mappers>  
         <mapper resource="sqlmap/member.xml" />
         <mapper resource="sqlmap/basedata.xml" />
+        <mapper resource="sqlmap/viewspot.xml" />
     </mappers>
 </configuration>  

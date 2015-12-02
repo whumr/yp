@@ -4,6 +4,7 @@ import com.confidant.common.BaseService;
 import com.confidant.entity.Member;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
@@ -12,7 +13,10 @@ import java.util.List;
 @Service("memberService")
 public class MemberService extends BaseService {
 
-    protected String NAMESPACE = "member.";
+    @PostConstruct
+    protected void init() {
+        namespace = "member.";
+    }
 
     /**
      * 验证用户名重复
@@ -20,7 +24,7 @@ public class MemberService extends BaseService {
      * @return
      */
     public Member getMemberByAccount(String account) {
-        List<Member> list = baseSqlSession.selectList(NAMESPACE + "getMemberByAccount", account);
+        List<Member> list = baseSqlSession.selectList(namespace + "getMemberByAccount", account);
         return list.isEmpty() ? null : list.get(0);
     }
 
@@ -30,7 +34,7 @@ public class MemberService extends BaseService {
      * @return
      */
     public Member getMemberByAccountPassword(Member member) {
-        List<Member> list = baseSqlSession.selectList(NAMESPACE + "getMemberByAccountPassword", member);
+        List<Member> list = baseSqlSession.selectList(namespace + "getMemberByAccountPassword", member);
         return list.isEmpty() ? null : list.get(0);
     }
 
@@ -39,6 +43,6 @@ public class MemberService extends BaseService {
      * @param member
      */
     public void updateMember(Member member) {
-        baseSqlSession.update(NAMESPACE + "updateMember", member);
+        baseSqlSession.update(namespace + "updateMember", member);
     }
 }
