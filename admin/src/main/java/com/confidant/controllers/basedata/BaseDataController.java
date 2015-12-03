@@ -111,7 +111,6 @@ public class BaseDataController extends BaseController {
 
     @RequestMapping("/saveViewspot")
     public void saveViewspot(HttpServletRequest request, HttpServletResponse response) {
-
 //        province_id : province_id, view_name : view_name, view_comment
         String province_id = request.getParameter("province_id");
         String view_name = request.getParameter("view_name");
@@ -127,6 +126,24 @@ public class BaseDataController extends BaseController {
             viewspot.setComments(view_comment);
             try {
                 viewspotService.insert(viewspot);
+            } catch (Exception e) {
+                e.printStackTrace();
+                result = failJson();
+            }
+            renderJson(response, result);
+        }
+    }
+
+    @RequestMapping("/deleteViewspot")
+    public void deleteViewspot(HttpServletRequest request, HttpServletResponse response) {
+//        province_id : province_id, view_name : view_name, view_comment
+        String id = request.getParameter("id");
+        if (Validator.emptyString(id) || Validator.notInt(id))
+            fail(response, Constants.ErrorMsg.Common.IllegalArgument);
+        else {
+            JSONObject result = successJson();
+            try {
+                viewspotService.deleteById(Long.parseLong(id));
             } catch (Exception e) {
                 e.printStackTrace();
                 result = failJson();

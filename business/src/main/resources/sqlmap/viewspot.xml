@@ -9,6 +9,10 @@
         )
     </insert>
 
+    <delete id="deleteById" parameterType="Long">
+        delete from viewspot where id = #{id}
+    </delete>
+
     <select id="searchViewspot" parameterType="Map" resultType="Map">
         select v.id, v.name, v.province_id, p.name province_name, v.type
         from viewspot v, province p

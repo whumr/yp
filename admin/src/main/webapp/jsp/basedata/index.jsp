@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/plugins/ztree/metroStyle/metroStyle.css" type="text/css">
+    <link rel="stylesheet" href="/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css" type="text/css">
     <script src="/plugins/ztree/jquery.ztree.core-3.5.min.js" type="text/javascript"></script>
 </head>
 <body>
@@ -73,14 +74,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1111</td>
-                                <td>222</td>
-                                <td>333</td>
-                                <td><a href="javascript:void(0)">删除</a></td>
-                            </tr>
                         </tbody>
                     </table>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="dataTables_info" id="sample_2_info" role="status" aria-live="polite">Showing 1
+                                to 5 of 12 entries
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="dataTables_paginate paging_simple_numbers" id="sample_2_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button previous disabled" aria-controls="sample_2" tabindex="0"
+                                        id="sample_2_previous"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                    <li class="paginate_button active" aria-controls="sample_2" tabindex="0"><a
+                                            href="#">1</a></li>
+                                    <li class="paginate_button " aria-controls="sample_2" tabindex="0"><a href="#">2</a>
+                                    </li>
+                                    <li class="paginate_button " aria-controls="sample_2" tabindex="0"><a href="#">3</a>
+                                    </li>
+                                    <li class="paginate_button next" aria-controls="sample_2" tabindex="0"
+                                        id="sample_2_next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -95,6 +114,11 @@
 
     jQuery(document).ready(function() {
         zTreeObj = $.fn.zTree.init($("#tree"), setting, tree_data);
+        var nodes = zTreeObj.getNodes();
+        if (nodes.length > 0) {
+            zTreeObj.selectNode(nodes[0]);
+            treeClick('', '', nodes[0]);
+        }
     });
 
     function treeClick(event, treeId, treeNode) {
@@ -107,7 +131,7 @@
             $('#parent_name').val('');
             $('#parent_id').val('');
         }
-        refresh(is_country, id);
+        refresh();
     }
 
     function saveView() {
@@ -133,26 +157,32 @@
             error: function() {
             },
             success: function(data) {
-                refresh(false, province_id);
+                refresh();
             }
         });
     }
 
-    function refresh(is_country, id) {
-        $.ajax({
-            url: '/basedata/searchViewspot',
-            type: 'POST',
-            dataType: 'json',
-            timeout: 10000,
-            data: is_country ? {country_id : id} : {province_id : id},
-            cache: false,
-            async: false,
-            error: function() {
-            },
-            success: function(result) {
-                refreshTable(result);
-            }
-        });
+    function refresh() {
+        var nodes = zTreeObj.getSelectedNodes();
+        if (nodes.length > 0) {
+            var id = nodes[0].id;
+            var is_country = nodes[0].isParent;
+            $.ajax({
+                url: '/basedata/searchViewspot',
+                type: 'POST',
+                dataType: 'json',
+                timeout: 10000,
+                data: is_country ? {country_id : id} : {province_id : id},
+                cache: false,
+                async: false,
+                error: function() {
+                },
+                success: function(result) {
+                    toggleAdd(true);
+                    refreshTable(result);
+                }
+            });
+        }
     }
 
     function refreshTable(result) {
@@ -183,19 +213,19 @@
             error: function() {
             },
             success: function(data) {
-                refresh(false, province_id);
+                refresh();
             }
         });
     }
 
-    function toggleAdd() {
+    function toggleAdd(hide) {
         var form = $('#add_view_form');
-        if (form.is(':hidden')) {
-            form.show();
-            $('#add_btn').text('取消');
-        } else {
+        if (!form.is(':hidden') || hide) {
             form.hide();
             $('#add_btn').text('添加');
+        } else {
+            form.show();
+            $('#add_btn').text('取消');
         }
     }
 </script>

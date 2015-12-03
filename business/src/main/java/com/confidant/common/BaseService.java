@@ -26,4 +26,8 @@ public abstract class BaseService {
     public void batchInsert(List<BaseEntity> entities) {
         baseSqlSession.insert(namespace + "batchInsert", entities);
     }
+
+    public void deleteById(Long id) {
+        baseSqlSession.delete(namespace + "deleteById", id);
+    }
 }

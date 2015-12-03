@@ -3,6 +3,6 @@
 <mapper namespace="basedata">
     <select id="getAllProvinces" resultType="Map">
         select c.id c_id, p.id p_id, p.name p_name, c.name c_name from country c left join province p on p.country_id = c.id
-        order by c.id
+        order by c.id, p.id
     </select>
 </mapper>
